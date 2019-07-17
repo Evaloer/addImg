@@ -1,0 +1,69 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<title>HTML5上传图片预览</title>  
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/test.css">
+</head>  
+<body>
+    <div class="topBox">
+        <p>自助抄表</p>
+    </div>
+    <div class="head">
+        <input type="text" placeholder="请输入抄表信息">
+    </div>
+    <div class="content">
+        <div class="centerBox">
+            <table class="tableShow">
+                <tr>
+                    <td class="text_one">
+                            表上示数
+                    </td>
+                    <td class="valueNum">
+                            1040
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text_two">
+                            示数图片
+                    </td>
+                    <td class="addImg">
+                        <input type="file" name="file0" id="file0" multiple="multiple"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text_one">
+                        示例
+                    </td>
+                </tr>
+            </table>
+                <img src="" id="img0">
+            <div class="submitBtn">
+                <p>提交</p>
+            </div>
+        </div>
+    </div>
+<script>   
+        $("#file0").change(function(){ 
+            var objUrl = getObjectURL(this.files[0]) ;//获取文件信息 
+                console.log("objUrl = "+objUrl);
+            if (objUrl) {  
+                $("#img0").attr("src", objUrl);  
+            }   
+        }) ;  
+        function getObjectURL(file) {
+            var url = null;   
+            if (window.createObjectURL!=undefined) {  
+                url = window.createObjectURL(file);  
+            } else if (window.URL!=undefined) { // mozilla(firefox)  
+                url = window.URL.createObjectURL(file);  
+            } else if (window.webkitURL!=undefined) { // webkit or chrome
+                url = window.webkitURL.createObjectURL(file);  
+            }  
+            return url ;  
+		}  
+</script>  
+</body>  
+</html> 
